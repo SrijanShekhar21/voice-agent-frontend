@@ -1,0 +1,26 @@
+/* src/components/SuggestionAnimator.css */
+
+.suggestion-container {
+  /* Centers the text and sets a fixed height to prevent layout shifts */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px; /* Adjust height as needed */
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.suggestion-text {
+  /* The core of the animation */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Smooth 0.5s fade */
+  font-size: 1rem; /* Adjust size as needed */
+  color: #666; /* A soft color works well for suggestions */
+  font-style: italic;
+}
+
+.suggestion-text.visible {
+  /* The state when the text should be visible */
+  opacity: 1;
+}

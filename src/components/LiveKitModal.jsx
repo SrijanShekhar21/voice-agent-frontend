@@ -17,9 +17,10 @@ const LiveKitModal = ({ setTalkingToAgent }) => {
   const [token, setToken] = useState(null);
 
   const getToken = useCallback(async (userName) => {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     try {
       const response = await fetch(
-        `/api/getToken?name=${encodeURIComponent(userName)}`
+        `${API_BASE_URL}/getToken?name=${encodeURIComponent(userName)}`
       );
       const token = await response.text();
       console.log("token: ", token);

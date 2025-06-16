@@ -22,14 +22,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
   color: hsl(0, 0%, 0%);
   /* border: 2px solid black; */
+  padding: 0 1rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  /* border: 2px solid red; */
 }
 
 .hero-section {
@@ -40,6 +42,22 @@
   justify-content: center;
   flex-direction: column;
   flex-grow: 1;
+}
+
+/* Add this new class to your App.css */
+
+.hero-content {
+  /* --- Typography --- */
+  font-size: clamp(2.5rem, 5vw, 2.5rem); /* Responsive font size */
+  font-weight: 700; /* Bolder than normal */
+  color: hsl(0, 0%, 20%); /* A dark gray is softer than pure black */
+  letter-spacing: -0.02em; /* Tightens up the letter spacing slightly */
+  line-height: 1.1; /* Adjusts the space between lines if it wraps */
+
+  /* --- Spacing & Alignment --- */
+  text-align: center;
+  max-width: 800px; /* Prevents the line from getting too long on wide screens */
+  margin-top: 1.5rem; /* Adds space between the text and the mic button */
 }
 
 .support-button {

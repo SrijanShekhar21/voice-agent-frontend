@@ -1,0 +1,141 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: center; /* Center the navbar items */
+  padding: 10px 20px;
+  /* border-bottom: 1px solid #e0e0e0; */
+  /* border: 2px solid red; */
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  position: relative; /* Crucial for dropdown positioning */
+}
+
+/* Styling for links and buttons in the nav */
+.nav-link,
+.nav-button {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Specific styling to match the active "Solutions" button */
+.nav-button:has(+ .solutions-dropdown) {
+  background-color: #f0f0f0; /* Light grey when dropdown is open */
+}
+
+/* Solutions Mega Menu Dropdown */
+.solutions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  /* transform: translateX(-50%); */
+  margin-top: 10px;
+  width: max-content; /* Adjust width based on content */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  padding: 24px;
+  display: flex;
+  gap: 40px; /* Space between columns */
+  z-index: 1000;
+}
+
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-column h3 {
+  font-size: 16px;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Space between items in a column */
+}
+
+.dropdown-column li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between icon and text */
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dropdown-column li a:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-column li a svg {
+  color: #666; /* Icon color */
+}
+
+/* Simple Dropdown for Resources */
+.simple-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  padding: 8px;
+  z-index: 1000;
+}
+
+.simple-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.simple-dropdown li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.simple-dropdown li a:hover {
+  background-color: #f5f5f5;
+}

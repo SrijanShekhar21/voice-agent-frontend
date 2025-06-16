@@ -1,0 +1,41 @@
+/* src/components/AnimatedMicButton.css */
+
+.animated-mic-button {
+  /* --- Basic Button Styles --- */
+  border: 2px solid hsl(0, 0%, 85%);
+  border-radius: 50%;
+  width: 100px; /* Fixed size for consistency */
+  height: 100px;
+  cursor: pointer;
+
+  /* --- Positioning Context --- */
+  /* This is CRUCIAL. It allows us to position the pulse and icon inside it. */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(0, 0%, 85%);
+
+  /* Prevents the pulse from showing outside the circular button */
+  overflow: hidden;
+}
+
+/* The pulsing div behind the microphone */
+.pulse {
+  position: absolute; /* Takes the element out of the normal flow */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsla(0, 0%, 100%);
+  border-radius: 50%;
+  z-index: 0; /* Ensures it is BEHIND the icon */
+}
+
+/* The microphone icon */
+.mic-icon {
+  font-size: 2.5rem;
+  color: #333;
+  z-index: 1; /* Ensures it is IN FRONT of the pulse */
+  position: relative; /* Needed for z-index to work correctly */
+}

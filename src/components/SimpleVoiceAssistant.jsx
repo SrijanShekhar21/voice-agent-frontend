@@ -6,7 +6,7 @@ import {
   useLocalParticipant,
 } from "@livekit/components-react";
 import { Track } from "livekit-client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react"; // <--- 1. Import useRef
 import "./SimpleVoiceAssistant.css";
 
 const Message = ({ type, text }) => {
@@ -30,6 +30,7 @@ const SimpleVoiceAssistant = () => {
   });
 
   const [messages, setMessages] = useState([]);
+  const chatContainerRef = useRef(null); // <--- 2. Create the ref
 
   useEffect(() => {
     const allMessages = [
@@ -40,6 +41,16 @@ const SimpleVoiceAssistant = () => {
     setMessages(allMessages);
   }, [agentTranscriptions, userTranscriptions]);
 
+  // <--- 4. Add the auto-scrolling effect
+  useEffect(() => {
+    // Check if the ref is attached to an element
+    if (chatContainerRef.current) {
+      const element = chatContainerRef.current;
+      // Set the scroll position to the total height of the content
+      element.scrollTop = element.scrollHeight;
+    }
+  }, [messages]); // This effect runs every time the messages array changes
+
   return (
     <div className="voice-assistant-container">
       <div className="visualizer-container">
@@ -49,11 +60,14 @@ const SimpleVoiceAssistant = () => {
       </div>
       <div className="control-section">
         <VoiceAssistantControlBar />
-        <div className="conversation">
-          {messages.map((msg, index) => (
-            <Message key={msg.id || index} type={msg.type} text={msg.text} />
-          ))}
-        </div>
+        {messages.length > 0 ? (
+          // <--- 3. Attach the ref to the conversation div
+          <div className="conversation" ref={chatContainerRef}>
+            {messages.map((msg, index) => (
+              <Message key={msg.id || index} type={msg.type} text={msg.text} />
+            ))}
+          </div>
+        ) : null}
       </div>
     </div>
   );
