@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* border: 2px solid red; */
 }
 
 .landing-page {
@@ -24,7 +25,7 @@
   align-items: center;
   color: hsl(0, 0%, 0%);
   /* border: 2px solid black; */
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -32,6 +33,10 @@
   font-size: 1.5rem;
   font-weight: bold;
   /* border: 2px solid red; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-section {
@@ -94,4 +99,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 850px) {
+  .hero-content {
+    font-size: 1.2rem;
+  }
 }

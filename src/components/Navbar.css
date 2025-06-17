@@ -1,10 +1,17 @@
 /* Navbar container */
 .navbar {
   display: flex;
-  justify-content: center; /* Center the navbar items */
-  padding: 10px 20px;
-  /* border-bottom: 1px solid #e0e0e0; */
-  /* border: 2px solid red; */
+  justify-content: space-between;
+  align-items: center; /* Vertically align items */
+  padding: 0.5rem 2rem; /* Added more horizontal padding */
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  position: relative; /* Needed for z-index context */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .nav-links {
@@ -13,7 +20,7 @@
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.3rem;
 }
 
 .nav-item {
@@ -25,16 +32,17 @@
 .nav-button {
   text-decoration: none;
   color: #333;
-  font-size: 16px;
-  padding: 10px 15px;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
   border-radius: 6px;
   background-color: transparent;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   transition: background-color 0.2s ease-in-out;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .nav-link:hover,
@@ -42,17 +50,17 @@
   background-color: #f0f0f0;
 }
 
-/* Specific styling to match the active "Solutions" button */
-.nav-button:has(+ .solutions-dropdown) {
-  background-color: #f0f0f0; /* Light grey when dropdown is open */
+/* Style the button when its corresponding dropdown is open */
+.nav-button:has(+ .solutions-dropdown),
+.nav-button:has(+ .simple-dropdown) {
+  background-color: #f0f0f0;
 }
 
 /* Solutions Mega Menu Dropdown */
 .solutions-dropdown {
   position: absolute;
   top: 100%;
-  left: 0%;
-  /* transform: translateX(-50%); */
+  left: 0;
   margin-top: 10px;
   width: max-content; /* Adjust width based on content */
   background-color: white;
@@ -85,7 +93,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Space between items in a column */
+  gap: 12px;
 }
 
 .dropdown-column li a {
@@ -94,7 +102,7 @@
   font-size: 15px;
   display: flex;
   align-items: center;
-  gap: 12px; /* Space between icon and text */
+  gap: 12px;
   padding: 8px 12px;
   border-radius: 6px;
   transition: background-color 0.2s ease-in-out;
@@ -105,7 +113,7 @@
 }
 
 .dropdown-column li a svg {
-  color: #666; /* Icon color */
+  color: #666;
 }
 
 /* Simple Dropdown for Resources */
@@ -120,6 +128,7 @@
   border: 1px solid #e0e0e0;
   padding: 8px;
   z-index: 1000;
+  width: 200px;
 }
 
 .simple-dropdown ul {
@@ -138,4 +147,84 @@
 
 .simple-dropdown li a:hover {
   background-color: #f5f5f5;
+}
+
+/* Hamburger menu button, hidden by default */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it's on top of other content */
+}
+
+/* =========================================== */
+/* ========== RESPONSIVE STYLES ============== */
+/* =========================================== */
+@media (max-width: 850px) {
+  /* Show the hamburger menu and hide the regular nav links */
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    /* Mobile menu panel styles */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Start off-screen */
+    height: 100vh;
+    width: 300px; /* Width of the side panel */
+    background-color: white;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 6rem 2rem 2rem 2rem;
+    gap: 1.5rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  /* Class to slide the menu into view */
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-button {
+    justify-content: space-between; /* Pushes chevron to the end */
+    width: 100%;
+  }
+
+  /* --- Mobile Dropdown Accordion Styling --- */
+
+  .solutions-dropdown,
+  .simple-dropdown {
+    position: static; /* IMPORTANT: Removes absolute positioning */
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 0 0 1rem; /* Indent sub-items */
+    background-color: transparent;
+    display: flex; /* Keep flex for columns */
+    flex-direction: column; /* Stack columns vertically */
+    gap: 1rem; /* Space between stacked columns */
+  }
+
+  .dropdown-column h3 {
+    border: none;
+    padding-bottom: 4px;
+    font-size: 14px;
+    color: #888;
+  }
+
+  .dropdown-column {
+    gap: 0;
+  }
 }

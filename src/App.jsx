@@ -27,7 +27,6 @@ const App = () => {
     <div className="app">
       <div className="landing-page">
         <header className="header">
-          <div className="logo">AI Voice Assistant</div>
           <Navbar />
         </header>
         <section className="hero-section">

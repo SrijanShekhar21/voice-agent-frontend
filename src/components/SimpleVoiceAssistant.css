@@ -6,6 +6,8 @@
   width: 100%;
   margin: 0 auto;
   height: 100%;
+  padding: 1rem 0; /* Add some vertical padding */
+  /* border: 2px solid red; */
 }
 
 .visualizer-container {
@@ -14,6 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100px; /* Ensure it has a minimum height */
+  /* border: 2px solid green; */
 }
 
 .visualizer {
@@ -22,39 +26,87 @@
   height: 5rem;
   padding: 1rem;
   margin: 0 auto;
-  /* border: 2px solid hsl(0, 0%, 85%); */
   border-radius: 1rem;
+  /* border: 2px solid purple; */
 }
 
 .control-section {
   width: 100%;
   padding: 0 20%;
   flex-grow: 1;
+  display: flex; /* Use flexbox to manage children */
+  flex-direction: column;
+  align-items: center;
+  /* border: 2px solid yellow; */
+}
+
+.control-bar {
+  /* border: 2px solid black; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 .conversation {
   padding: 20px;
   max-height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto; /* Use auto to only show scrollbar when needed */
   width: 100%;
-  /* border: 1px solid hsl(0, 0%, 85%); */
   border-radius: 8px;
   margin-top: 20px;
-  /* background-color: hsl(0, 0%, 99%); */
+  /* border: 2px solid orange; */
 }
 
 .message {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.message:last-child {
+  margin-bottom: 0;
 }
 
 .message-agent {
   color: #4a90e2;
+  font-weight: bold;
 }
 
 .message-user {
-  color: #2ecc71;
+  color: #2ba560;
+  font-weight: bold;
 }
 
 .message-text {
   color: #333;
+  font-weight: normal; /* Ensure text is not bold */
+}
+
+/* =========================================== */
+/* ========== RESPONSIVE STYLES ============== */
+/* =========================================== */
+@media (max-width: 768px) {
+  .voice-assistant-container {
+    padding: 0.5rem 0; /* Reduce vertical padding on mobile */
+  }
+
+  /* Reduce the horizontal padding significantly on smaller screens */
+  .control-section {
+    padding: 0 1rem; /* Use a fixed, smaller padding */
+  }
+
+  /* Make the visualizer a bit smaller and take up more screen width */
+  .visualizer {
+    max-width: 90%;
+    height: 4rem;
+  }
+
+  /* Adjust conversation box padding and max-height for smaller viewports */
+  .conversation {
+    padding: 1rem;
+    margin-top: 1rem;
+    /* You could use viewport height to make it more proportional to the screen */
+    max-height: 45vh;
+  }
 }

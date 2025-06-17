@@ -17,6 +17,8 @@ import {
   FaHeartbeat,
   FaCar,
   FaBuilding,
+  FaBars, // Added for mobile menu
+  FaTimes, // Added for mobile menu
 } from "react-icons/fa";
 
 // Data for the dropdown menu items
@@ -26,36 +28,37 @@ const useCases = [
   { icon: <FaPhoneAlt />, name: "Answering Service" },
 ];
 
-// const caseStudies = [
-//   { icon: <FaUserFriends />, name: "Customer Support" },
-//   { icon: <FaFileAlt />, name: "Data Collection" },
-//   { icon: <FaPhoneVolume />, name: "Inbound Calls" },
-//   { icon: <FaFire />, name: "Lead Reactivation" },
-//   { icon: <FaChartLine />, name: "Sales Qualification" },
-// ];
-
-// const industries = [
-//   { icon: <FaHome />, name: "Mortgage" },
-//   { icon: <FaUserTie />, name: "Recruitment" },
-//   { icon: <FaHeartbeat />, name: "Healthcare" },
-//   { icon: <FaCar />, name: "Car Dealership" },
-//   { icon: <FaBuilding />, name: "Agency" },
-// ];
-
 const Navbar = () => {
   const [isSolutionsOpen, setSolutionsOpen] = useState(false);
   const [isResourcesOpen, setResourcesOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleSolutions = () => {
+    setSolutionsOpen(!isSolutionsOpen);
+    setResourcesOpen(false); // Close other dropdown
+  };
+
+  const toggleResources = () => {
+    setResourcesOpen(!isResourcesOpen);
+    setSolutionsOpen(false); // Close other dropdown
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <nav className="navbar">
-      <ul className="nav-links">
-        <li
-          className="nav-item"
-          onMouseEnter={() => setSolutionsOpen(true)}
-          onMouseDown={() => setSolutionsOpen(true)}
-          onMouseLeave={() => setSolutionsOpen(false)}
-        >
-          <button className="nav-button">
+      <div className="logo">AI Voice Assistant</div>
+
+      {/* Hamburger Menu Toggle Button */}
+      <button className="menu-toggle" onClick={toggleMobileMenu}>
+        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
+        <li className="nav-item">
+          <button className="nav-button" onClick={toggleSolutions}>
             Solutions {isSolutionsOpen ? <FaChevronUp /> : <FaChevronDown />}
           </button>
           {isSolutionsOpen && (
@@ -72,30 +75,6 @@ const Navbar = () => {
                   ))}
                 </ul>
               </div>
-              {/* <div className="dropdown-column">
-                <h3>Case studies</h3>
-                <ul>
-                  {caseStudies.map((item) => (
-                    <li key={item.name}>
-                      <a href="#">
-                        {item.icon} {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
-              {/* <div className="dropdown-column">
-                <h3>Industries</h3>
-                <ul>
-                  {industries.map((item) => (
-                    <li key={item.name}>
-                      <a href="#">
-                        {item.icon} {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
             </div>
           )}
         </li>
@@ -109,16 +88,10 @@ const Navbar = () => {
             Pricing
           </a>
         </li>
-        <li
-          className="nav-item"
-          onMouseEnter={() => setResourcesOpen(true)}
-          onMouseDown={() => setResourcesOpen(true)}
-          onMouseLeave={() => setResourcesOpen(false)}
-        >
-          <button className="nav-button">
+        <li className="nav-item">
+          <button className="nav-button" onClick={toggleResources}>
             Resources {isResourcesOpen ? <FaChevronUp /> : <FaChevronDown />}
           </button>
-          {/* A simple dropdown example for Resources */}
           {isResourcesOpen && (
             <div className="simple-dropdown">
               <ul>

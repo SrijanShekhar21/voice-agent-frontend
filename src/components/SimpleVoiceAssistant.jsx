@@ -59,7 +59,9 @@ const SimpleVoiceAssistant = () => {
         </div>
       </div>
       <div className="control-section">
-        <VoiceAssistantControlBar />
+        <div className="control-bar">
+          <VoiceAssistantControlBar />
+        </div>
         {messages.length > 0 ? (
           // <--- 3. Attach the ref to the conversation div
           <div className="conversation" ref={chatContainerRef}>
