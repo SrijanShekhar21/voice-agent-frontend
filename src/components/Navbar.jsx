@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">AI Voice Assistant</div>
+      <div className="logo">Sixeyes AI - Demo</div>
 
       {/* Hamburger Menu Toggle Button */}
       <button className="menu-toggle" onClick={toggleMobileMenu}>
