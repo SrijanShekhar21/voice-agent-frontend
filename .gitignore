@@ -33,3 +33,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# amplify
+node_modules
+.amplify
+amplify_outputs*
+amplifyconfiguration*
