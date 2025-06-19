@@ -62,14 +62,14 @@ const SimpleVoiceAssistant = () => {
         <div className="control-bar">
           <VoiceAssistantControlBar />
         </div>
-        {messages.length > 0 ? (
+        {/* {messages.length > 0 ? (
           // <--- 3. Attach the ref to the conversation div
           <div className="conversation" ref={chatContainerRef}>
             {messages.map((msg, index) => (
               <Message key={msg.id || index} type={msg.type} text={msg.text} />
             ))}
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );
