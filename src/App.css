@@ -26,7 +26,7 @@
   color: hsl(0, 0%, 0%);
   /* border: 2px solid black; */
   /* padding: 0 1rem; */
-  border-bottom: 1px solid #e0e0e0;
+  /* border-bottom: 1px solid #e0e0e0; */
 }
 
 .logo {
@@ -37,6 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* color: hsl(240, 100%, 20%); */
 }
 
 .hero-section {
@@ -53,10 +54,10 @@
 
 .hero-content {
   /* --- Typography --- */
-  font-size: clamp(2.5rem, 5vw, 2.5rem); /* Responsive font size */
-  font-weight: 700; /* Bolder than normal */
+  font-size: clamp(2.5rem, 5vw, 2.5rem);
+  font-weight: 500;
   color: hsl(0, 0%, 20%); /* A dark gray is softer than pure black */
-  letter-spacing: -0.02em; /* Tightens up the letter spacing slightly */
+  letter-spacing: -0.02em;
   line-height: 1.1; /* Adjusts the space between lines if it wraps */
 
   /* --- Spacing & Alignment --- */
